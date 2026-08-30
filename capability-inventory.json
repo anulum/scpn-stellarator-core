@@ -1,0 +1,13 @@
+{
+  "capabilities": [],
+  "claims": [],
+  "evidence_maturity": "architecture_only",
+  "implemented_capability_count": 0,
+  "project": "SCPN-STELLARATOR-CORE",
+  "schema": "scpn.capability-inventory.v1",
+  "schema_version": "1.0.0",
+  "source": {
+    "manifest_path": "reactor-domain.json",
+    "manifest_sha256": "9029c094dc2a2677dd5c9dcfdbee853166662bce383cb9ea0c61075b2ac1f6e0"
+  }
+}
