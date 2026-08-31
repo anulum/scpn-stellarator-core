@@ -14,6 +14,10 @@ SCPN Stellarator Core — CHANGELOG
 
 ### Added
 
+- Generated repository header artwork: `docs/assets/generate_header.py`
+  renders three deterministic 1280x640 images from the repository's own
+  domain surface (rotating flux-surface sections used by the README, the
+  enforced coil-class split, and the rotational-transform winding).
 - Modular hosted-workflow surface per the ecosystem workflow-modularity
   standard: `ci.yml` reduced to a coordinator with a stable fail-closed
   `gate` job, single-responsibility reusable workflows for static

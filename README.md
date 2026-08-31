@@ -8,6 +8,11 @@ Contact: www.anulum.li | protoscience@anulum.li
 SCPN Stellarator Core — README
 -->
 
+<div align="center">
+  <img src="docs/assets/repo_header.png"
+       alt="SCPN Stellarator Core — Rotating Sections, Owned Truth">
+</div>
+
 # SCPN Stellarator Core
 
 Governed device-family repository for stellarator-class fusion systems within
