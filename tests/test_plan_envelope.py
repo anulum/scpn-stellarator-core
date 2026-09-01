@@ -42,7 +42,7 @@ from scpn_stellarator_core.plan_envelope import (
 )
 
 FIXTURE = Path(__file__).parent / "data" / "plan_envelope_fixture.json"
-FIXTURE_SHA256 = "8df3515a35978d0e518ba75749421052a399d9d8e77e8c176cf4231b259b0af1"
+FIXTURE_SHA256 = "789b27619f17678e61b31db7cfa45147661bbd33ef97e6e94af1dc734a5629e9"
 
 
 def fixture_document() -> dict[str, Any]:
