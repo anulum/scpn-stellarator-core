@@ -55,18 +55,18 @@ verifies locally and in hosted CI.
 | `sbom.yml` | reproducible dependency inventory, no release |
 | `scorecard.yml` | read-only supply-chain analysis |
 
-## Shared ecosystem gate
+## Local and CI scope
 
-From the monorepo root:
+`make typecheck`, the preflight typing gate, and the CI static-analysis
+workflow all run `mypy --strict src tools tests`. `make test`, the preflight
+test gate, and the CI test workflow all include `src/` and `tools/` in the
+statement and branch coverage denominator, with a 100 % threshold.
 
-```bash
-python3 agentic-shared/scripts/repository_tier0_scaffold_audit.py \
-  03_CODE/SCPN-STELLARATOR-CORE --json
-```
-
-proves the Tier-0 local-scaffold machine profile (required and forbidden
-paths, Git/remote boundary, workflow pins and permissions, badge non-claims,
-JSON integrity, defensive ignore rules).
+Use focused tests and the applicable lint, typing, manifest, and documentation
+checks during local development. Run the full test suite and full preflight
+before an owner-authorised push; CI also runs the full suite. A declared gate
+or a successful component check proves only its exercised scope. Repository
+acceptance requires the applicable source, gate, and evidence review.
 
 ## Device configuration model
 

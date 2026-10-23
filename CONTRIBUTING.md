@@ -45,12 +45,15 @@ Contributions are coordinated directly with the owner
 
 ```bash
 python3 -m venv .venv && .venv/bin/pip install -r requirements-dev.txt
-make lint typecheck test validate   # or: make preflight
+make lint typecheck validate docs
 ```
 
-All gates in `VALIDATION.md` must pass before a commit is proposed. Commits
-are atomic, descriptive, and staged by explicit pathspec. History is never
-rewritten.
+Run focused tests for the changed behaviour and the applicable checks in
+`VALIDATION.md` before a local commit. Before an owner-authorised push, run
+`make test` and the complete `make preflight` sequence. Both Make and CI
+include `src/` and `tools/` in the coverage denominator and use strict typing
+for `src/`, `tools/`, and `tests/`. Commits are atomic, descriptive, and
+staged by explicit pathspec. History is never rewritten.
 
 ## Security-relevant changes
 

@@ -97,15 +97,20 @@ CONTROL adapter contract is in
 ## Validation
 
 Every gate currently active in this repository is listed in
-[`VALIDATION.md`](VALIDATION.md). The local sequence is:
+[`VALIDATION.md`](VALIDATION.md). Local checks include:
 
 ```bash
 make lint        # ruff check + ruff format --check
-make typecheck   # mypy --strict tools tests
-make test        # pytest with 100 % statement and branch coverage on tools/
+make typecheck   # mypy --strict src tools tests
 make validate    # domain manifest, descriptor, and inventory checks
-make preflight   # the full fail-closed gate sequence
+make docs        # documentation encoding and relative links
 ```
+
+Run the tests relevant to the changed behaviour during local development.
+Before an owner-authorised push, `make test` runs the full suite with 100 %
+statement and branch coverage of `src/` and `tools/`, and `make preflight`
+runs the complete gate sequence. CI enforces the same typing and coverage
+scope.
 
 ## Security
 
