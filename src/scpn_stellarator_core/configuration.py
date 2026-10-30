@@ -279,6 +279,34 @@ def _require_mapping(record: dict[str, Any], field: str) -> dict[str, Any]:
     return value
 
 
+def _reject_duplicates(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    """Assemble a JSON object while refusing duplicate members.
+
+    Parameters
+    ----------
+    pairs
+        Key-value pairs in document order.
+
+    Returns
+    -------
+    dict[str, Any]
+        The assembled object.
+
+    Raises
+    ------
+    DeviceConfigurationError
+        If any key occurs more than once.
+    """
+    record: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in record:
+            raise DeviceConfigurationError(
+                f"record: duplicate member {key!r} is rejected"
+            )
+        record[key] = value
+    return record
+
+
 def _number(record: dict[str, Any], field: str) -> float:
     """Return one required real-number field of a record.
 
@@ -419,7 +447,11 @@ def configuration_from_bytes(data: bytes) -> DeviceConfiguration:
     Parameters
     ----------
     data
-        UTF-8 JSON document; NaN and infinity literals are rejected.
+        UTF-8 JSON document exactly as :meth:`DeviceConfiguration.canonical_bytes`
+        emits it. NaN and infinity literals and duplicate members are
+        rejected, and so is any document whose bytes differ from the
+        canonical serialisation of the configuration it describes, so one
+        parameter set has exactly one accepted byte form and one digest.
 
     Returns
     -------
@@ -429,7 +461,9 @@ def configuration_from_bytes(data: bytes) -> DeviceConfiguration:
     Raises
     ------
     DeviceConfigurationError
-        If the document is not valid strict JSON or violates the model.
+        If the document is not valid strict JSON, nests deeper than the
+        decoder can follow, carries a duplicate member, violates the
+        model, or is not canonical.
     """
 
     def _reject_constant(literal: str) -> float:
@@ -438,7 +472,16 @@ def configuration_from_bytes(data: bytes) -> DeviceConfiguration:
         )
 
     try:
-        record = json.loads(data.decode("utf-8"), parse_constant=_reject_constant)
+        record = json.loads(
+            data.decode("utf-8"),
+            parse_constant=_reject_constant,
+            object_pairs_hook=_reject_duplicates,
+        )
     except (UnicodeDecodeError, json.JSONDecodeError) as exc:
         raise DeviceConfigurationError(f"record: invalid JSON document: {exc}") from exc
-    return configuration_from_record(record)
+    except RecursionError as exc:
+        raise DeviceConfigurationError("record: JSON nesting is too deep") from exc
+    configuration = configuration_from_record(record)
+    if configuration.canonical_bytes() != data:
+        raise DeviceConfigurationError("record: non-canonical document is rejected")
+    return configuration
