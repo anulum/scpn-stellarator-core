@@ -87,12 +87,13 @@ contracts; nothing flows from this repository to an actuator.
 |---|---|
 | `reactor-domain.json` | portable source of project identity and contracts |
 | `studio/portfolio-descriptor.json` | derived Studio descriptor, `not_federated` |
-| `capability-inventory.json` | generated, truthfully empty inventory |
+| `capability-inventory.json` | generated inventory of the implemented capabilities and their maturity |
 | `docs/CONTROL_ADAPTER_SPECIFICATION.md` | device-owned adapter contract |
 | `docs/THREAT_MODEL.md` | assets, trust boundaries, misuse paths |
 | `docs/adr/0001-repository-boundary.md` | boundary decision record |
+| `src/scpn_stellarator_core/` | the package: configuration, observability and plan envelope |
 | `tools/` | validators, derivation tools, preflight orchestrator |
-| `tests/` | statement- and branch-complete tests for `tools/` |
+| `tests/` | statement- and branch-complete tests for `src/` and `tools/` |
 | `.github/workflows/` | read-only CI definitions (no publication) |
 
 ## Contract surfaces and versioning
