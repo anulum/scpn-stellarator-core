@@ -40,6 +40,10 @@ SCPN Stellarator Core — CHANGELOG
 
 ### Added
 
+- An installed-wheel job in the required CI gate builds the wheel without
+  build isolation from hash-locked `setuptools` and `wheel`
+  (`requirements-build.txt`), installs it alone into a clean environment and
+  runs `tools/installed_package_check.py` from outside the checkout.
 - Diagnostic-plan depth: per-channel signal inventories, frame
   transformations with a fixed kind-admissibility table and connectivity
   rule, and a clock topology partitioning the physical clocks into rooted
