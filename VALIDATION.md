@@ -19,7 +19,7 @@ followed by the evidence record of each implemented capability.
 |---|---|---|
 | Lint | `ruff check .` | all Python under `src/`, `tools/`, and `tests/` |
 | Format | `ruff format --check .` | same scope |
-| Typing | `mypy --strict src tools tests` | zero errors, strict mode |
+| Typing | `mypy --strict src tools tests conftest.py` | zero errors, strict mode |
 | Tests + coverage | `pytest -q --cov=src --cov=tools --cov-branch --cov-fail-under=100` | 100 % statement and branch coverage of `src/` and `tools/` |
 | Domain manifest | `python3 tools/validate_reactor_domain.py reactor-domain.json` | schema, registry version/digest, exact configuration set, capability inventory shape and ceiling rule, safety boundary |
 | Studio descriptor | `python3 tools/derive_studio_descriptor.py --check` | committed descriptor byte-identical to a fresh derivation |
@@ -58,7 +58,7 @@ verifies locally and in hosted CI.
 ## Local and CI scope
 
 `make typecheck`, the preflight typing gate, and the CI static-analysis
-workflow all run `mypy --strict src tools tests`. `make test`, the preflight
+workflow all run `mypy --strict src tools tests conftest.py`. `make test`, the preflight
 test gate, and the CI test workflow all include `src/` and `tools/` in the
 statement and branch coverage denominator, with a 100 % threshold.
 
