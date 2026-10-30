@@ -102,7 +102,7 @@ Every gate currently active in this repository is listed in
 ```bash
 make lint        # ruff check + ruff format --check
 make typecheck   # mypy --strict src tools tests conftest.py
-make validate    # domain manifest, descriptor, and inventory checks
+make validate    # domain manifest, descriptor, inventory, and workflow checks
 make docs        # documentation encoding and relative links
 ```
 

@@ -25,6 +25,13 @@ SCPN Stellarator Core — CHANGELOG
 
 ### Changed
 
+- Local gates check what CI checks: `make validate` now also runs the
+  workflow audit, a parity test binds the make targets and the preflight
+  plan to the hosted workflows, and an enrollment test maps every tracked
+  file to exactly one gated surface. The documentation gate reads only files
+  git would publish, so a git-ignored private tree is never link-checked.
+  Hooks without their own stage list run before a commit and before a push
+  only; commit-msg runs the trailer guard alone.
 - Install every CI dependency from hash-locked requirement sets with
   `--require-hashes`: the development toolchain, the audit and inventory
   tools. `make lock` regenerates the sets; the package itself installs with
