@@ -25,6 +25,11 @@ SCPN Stellarator Core — CHANGELOG
 
 ### Changed
 
+- `scpn_stellarator_core.observability` is now a package with one module per
+  responsibility — vocabulary, catalogue binding, frames, clocks, signals and
+  channels, plan composition, record parsing — behind the unchanged public
+  import path. The 33 public names, canonical plan bytes and refusal
+  behaviour are unchanged.
 - Local gates check what CI checks: `make validate` now also runs the
   workflow audit, a parity test binds the make targets and the preflight
   plan to the hosted workflows, and an enrollment test maps every tracked

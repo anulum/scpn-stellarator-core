@@ -62,7 +62,7 @@ REQUIRED_PATHS = (
     "src/scpn_stellarator_core/__init__.py",
     "src/scpn_stellarator_core/configuration.py",
     "src/scpn_stellarator_core/errors.py",
-    "src/scpn_stellarator_core/observability.py",
+    "src/scpn_stellarator_core/observability/__init__.py",
     "src/scpn_stellarator_core/plan_envelope.py",
     "tests/data/plan_envelope_fixture.json",
     "src/scpn_stellarator_core/parameters.py",
