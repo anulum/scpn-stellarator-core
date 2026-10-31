@@ -42,16 +42,12 @@ field once per-capability states exist.
 3. Coil-realisation invariant (hard): `heliotron` and `torsatron`
    configurations require a continuous-helical-coil realisation, the
    modular `stellarator` class requires a modular-coil realisation —
-   the classical distinction of the stellarator family (L. Spitzer,
-   Phys. Fluids 1 (1958) 253; K. Uo, J. Phys. Soc. Japan 16 (1961)
-   1380). An identifier that contradicts its coil class is rejected.
+   a declared classification of the family. An identifier that
+   contradicts its coil class is rejected.
 4. Advisory estimates, reported by `consistency_report()` and never
-   clamped: aspect ratio below 3 is flagged (outside the classical
-   large-aspect-ratio stellarator regime), and volume-averaged beta
-   above 5 % is flagged (above the routinely sustained stellarator
-   values, cf. LHD ⟨β⟩ ≈ 5 %; Sakakibara et al., Nucl. Fusion 55
-   (2015) 083020). Rotational transform is bounded to (0, 2] as a model
-   bound.
+   clamped: aspect ratio below a declared 3 and volume-averaged beta
+   above a declared 5 % are flagged. Rotational transform is bounded to
+   (0, 2] as a model bound.
 5. Repository-level `evidence_maturity` = the highest state claimed by
    any entry in `capabilities`; per-capability states are the
    authoritative claim surface (family ADR 0002 semantics, identical to
@@ -70,3 +66,14 @@ field once per-capability states exist.
 - Later lanes (diagnostic semantics with three-dimensional flux/Boozer
   conventions, safety envelope) build on these types; maturity advances
   per capability only with the evidence the family standard requires.
+
+## Amendment 2026-10-31
+
+The coil-class rule was credited to L. Spitzer, Phys. Fluids 1 (1958)
+253, and K. Uo, J. Phys. Soc. Japan 16 (1961) 1380, and the 5 % beta
+bound to the LHD result of Sakakibara et al., Nucl. Fusion 55 (2015)
+083020. None of the three is on file, and the 1958 concept paper is not
+a plausible source for modular non-planar coils. The coil rule, the
+aspect-ratio bound and the beta bound are now named declared, and the
+findings say so; the two concept papers stay named in the configuration
+module as the origins of the two lines. No rule, value or check changed.

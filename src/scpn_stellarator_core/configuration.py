@@ -10,16 +10,18 @@
 
 A :class:`DeviceConfiguration` composes validated geometry, coil
 realisation, and operational limits under exactly one of the three
-registry identifiers this repository owns. The coil-class invariant
-follows the classical family distinction — continuous helical windings
-for the heliotron/torsatron line (K. Uo, J. Phys. Soc. Japan 16 (1961)
-1380), modular non-planar coils for the modular stellarator line
-(L. Spitzer, Phys. Fluids 1 (1958) 253) — and an identifier that
-contradicts its coil class is rejected. Serialisation is canonical
-(sorted keys, no NaN or infinity accepted anywhere) and the SHA-256
-digest of those bytes identifies the exact parameter set. The registry
-binding is a data pin only — this package never imports SCPN Phase
-Orchestrator code.
+registry identifiers this repository owns. The coil-class invariant is a
+declared classification of the family — continuous helical windings for
+the heliotron/torsatron line, modular non-planar coils for the modular
+stellarator line — and an identifier that contradicts its coil class is
+rejected. No source for the classification is on file: the concept
+papers L. Spitzer, Phys. Fluids 1 (1958) 253, and K. Uo, J. Phys. Soc.
+Japan 16 (1961) 1380, are named as the origins of the two lines, not as
+sources of the coil rule. The aspect-ratio and beta advisory bounds are
+declared as well. Serialisation is canonical (sorted keys, no NaN or
+infinity accepted anywhere) and the SHA-256 digest of those bytes
+identifies the exact parameter set. The registry binding is a data pin
+only — this package never imports SCPN Phase Orchestrator code.
 """
 
 from __future__ import annotations
@@ -160,8 +162,8 @@ class DeviceConfiguration:
         Returns
         -------
         tuple of ConsistencyFinding
-            Advisory findings from the documented estimates; empty when
-            the declared operating point sits in the classical regime.
+            Advisory findings from the declared estimates; empty when
+            the declared operating point sits inside the declared bounds.
             Findings are advisory instruments, not machine claims.
         """
         findings: list[ConsistencyFinding] = []
@@ -172,7 +174,7 @@ class DeviceConfiguration:
                     field="geometry.aspect_ratio",
                     message=(
                         f"aspect ratio {aspect_ratio:.3f} is below the "
-                        "classical stellarator regime bound "
+                        "declared stellarator aspect-ratio bound "
                         f"{CLASSICAL_MIN_ASPECT_RATIO:.1f}"
                     ),
                 )
@@ -184,8 +186,8 @@ class DeviceConfiguration:
                     field="limits.volume_averaged_beta_percent",
                     message=(
                         f"volume-averaged beta {beta:.2f} % exceeds the "
-                        "routinely sustained stellarator value "
-                        f"{ROUTINE_MAX_BETA_PERCENT:.1f} % (LHD-class)"
+                        "declared stellarator beta bound "
+                        f"{ROUTINE_MAX_BETA_PERCENT:.1f} %"
                     ),
                 )
             )

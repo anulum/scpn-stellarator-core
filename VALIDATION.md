@@ -81,15 +81,14 @@ What is exercised, all under the 100 % statement-and-branch coverage gate:
   rejecting non-finite values, bound violations, torus inversions, and
   identifier/coil-class contradictions — every rejection branch is
   tested.
-- The hard coil-class invariant of the stellarator family: continuous
-  helical windings for `heliotron`/`torsatron` (Uo, J. Phys. Soc. Japan
-  16 (1961) 1380), modular non-planar coils for `stellarator` (Spitzer,
-  Phys. Fluids 1 (1958) 253).
+- The hard coil-class invariant of the stellarator family, a declared
+  classification: continuous helical windings for `heliotron`/`torsatron`,
+  modular non-planar coils for `stellarator` (the earlier Uo 1961 and
+  Spitzer 1958 credits, not on file, were removed on 2026-10-31).
 - Advisory consistency findings with documented bounds, reported and
-  never clamped: aspect ratio below the classical stellarator regime
-  (A < 3) and volume-averaged beta above routinely sustained values
-  (⟨β⟩ > 5 %, LHD-class; Sakakibara et al., Nucl. Fusion 55 (2015)
-  083020).
+  never clamped: aspect ratio below a declared 3 and volume-averaged
+  beta above a declared 5 % (the earlier LHD credit to Sakakibara et al.
+  2015, not on file, was removed on 2026-10-31).
 - Canonical serialisation (sorted keys, NaN/infinity rejected on both
   emit and parse), SHA-256 digest identity, and a strict round-trip
   parser that refuses unknown fields.

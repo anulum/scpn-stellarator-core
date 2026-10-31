@@ -310,7 +310,7 @@ def generate_coil_invariant() -> None:
     ax.text(
         2.2,
         -2.75,
-        "stellarator · Spitzer, Phys. Fluids 1 (1958) 253",
+        "stellarator · modular coils (declared class)",
         color="#445566",
         fontsize=7.5,
         fontfamily="monospace",
@@ -344,7 +344,7 @@ def generate_coil_invariant() -> None:
     ax.text(
         7.0,
         -2.75,
-        "heliotron/torsatron · Uo, JPSJ 16 (1961) 1380",
+        "heliotron/torsatron · helical winding (declared)",
         color="#445566",
         fontsize=7.5,
         fontfamily="monospace",

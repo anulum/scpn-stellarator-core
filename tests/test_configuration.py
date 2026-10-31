@@ -107,10 +107,13 @@ def test_consistency_report_clean_and_findings() -> None:
     findings = low_aspect.consistency_report()
     assert len(findings) == 1
     assert findings[0].field == "geometry.aspect_ratio"
+    assert "declared stellarator aspect-ratio bound" in findings[0].message
     high_beta = synthetic_configuration(volume_averaged_beta_percent=6.0)
     findings = high_beta.consistency_report()
     assert len(findings) == 1
     assert findings[0].field == "limits.volume_averaged_beta_percent"
+    assert "declared stellarator beta bound" in findings[0].message
+    assert "LHD" not in findings[0].message
 
 
 def test_canonical_round_trip_and_digest() -> None:
