@@ -51,10 +51,12 @@ tokamak configurations and does not apply here.
    facility monotonic clock, noncyclic to either non-simulation clock).
 4. Timing is fail-closed where physics fixes the bound: the Nyquist
    criterion for cyclic channels. The device-typical band check is
-   advisory only: magnetic-fluctuation diagnostics in the 0.5–200 kHz
-   scale (I. H. Hutchinson, Principles of Plasma Diagnostics, 2nd ed.,
-   2002, ch. 10), covering the low-frequency MHD activity relevant to
-   heliotron, classical stellarator, and torsatron coil classes.
+   advisory only and compares against a declared synthetic design band of
+   0.5–200 kHz for low-frequency MHD activity in heliotron, classical
+   stellarator and torsatron coil classes. An earlier version credited it
+   to I. H. Hutchinson, Principles of Plasma Diagnostics (2002), ch. 10,
+   which is not on file, so it was never checked against it (attribution
+   removed 2026-10-31).
 5. The reference plan mirrors canonical stellarator practice with
    synthetic declarations: a flux-loop equilibrium set, a line-density
    interferometer, Thomson-scattering profiles (all noncyclic against

@@ -415,9 +415,9 @@ class DiagnosticPlan:
                         field=f"channels[{channel.identifier}].max_signal_frequency_hz",
                         message=(
                             f"declared MHD band {channel.max_signal_frequency_hz:.1f}"
-                            " Hz is outside the typical magnetic-fluctuation "
-                            "diagnostic scale 0.5-200 kHz (Hutchinson 2002, "
-                            "ch. 10)"
+                            " Hz is outside the declared magnetic-fluctuation "
+                            "design band 0.5-200 kHz (synthetic; not checked "
+                            "against a source on file)"
                         ),
                     )
                 )
@@ -428,8 +428,8 @@ class DiagnosticPlan:
                         message=(
                             "acquisition window "
                             f"{channel.acquisition_duration_s:.2e} s is "
-                            "longer than the stellarator long-pulse scale of up "
-                            "to ~1000 s (Hutchinson 2002 context)"
+                            "longer than the declared ~1000 s long-pulse "
+                            "bound (synthetic; not checked against a source on file)"
                         ),
                     )
                 )

@@ -130,10 +130,12 @@ What is exercised, all under the 100 % statement-and-branch coverage gate:
   synthetic declarations: flux-loop equilibrium set, line-density
   interferometer, Thomson-scattering profiles, Mirnov array, and the
   model-owned synthetic oscillator, each bound to its clock domain.
-- A documented advisory band check with its source stated in the code:
-  magnetic-fluctuation diagnostics in the 0.5–200 kHz scale
-  (Hutchinson, Principles of Plasma Diagnostics, 2nd ed., 2002,
-  ch. 10); findings are reported, never clamped.
+- Advisory checks against declared synthetic design bounds: a
+  magnetic-fluctuation band of 0.5–200 kHz and a ~1000 s long-pulse bound.
+  They were earlier credited to Hutchinson, Principles of Plasma
+  Diagnostics (2002), ch. 10, which is not on file, so they were never
+  checked against it; the attribution was removed (2026-10-31). Findings
+  are reported, never clamped.
 - Canonical serialisation (sorted keys, NaN/infinity rejected on both
   emit and parse), SHA-256 digest identity, and a strict round-trip
   parser that refuses unknown fields.
